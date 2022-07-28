@@ -10,9 +10,10 @@ release = '0.1'
 version = '0.1.0'
 
 from os import environ
+from os.path import dirname
 from sys import path
 
-path.insert(0, '../..')
+path.insert(0, dirname(dirname(dirname(__file__))))
 environ.setdefault("DJANGO_SETTINGS_MODULE", "docs.source.settings")
 
 import django
