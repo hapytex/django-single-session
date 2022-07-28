@@ -1,0 +1,10 @@
+[project]
+name = "django-single-login"
+authors = [{name = "Willem Van Onsem", email = "hapythexeu+gh@gmail.com"}]
+
+[build-system]
+requires = ['setuptools>=40.8.0', 'wheel']
+build-backend = 'setuptools.build_meta:__legacy__'
+
+[tool.black]
+extend-exclude = '(.*/migrations/.*|setup)\.py'
