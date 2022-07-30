@@ -13,7 +13,7 @@ def logout_user_on_all_sessions(modeladmin, request, queryset):
     This requires a single_session.logout permission.
     """
     Session.objects.filter(
-        usersession__user__in=queryset, usersession__user__is_admin=False
+        usersession__user__in=queryset, usersession__user__is_superuser=False
     ).delete()
 
 

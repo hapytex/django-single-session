@@ -17,9 +17,11 @@ class SingleSessionConfig(AppConfig):
         for the user model, given there is such ModelAdmin.
         """
         from single_session import signals  # noqa
-        from django.contrib import admin
         from django.contrib.auth import get_user_model
         from django.contrib.sessions.models import Session
+        if 'django.contrib.admin' not in settings.INSTALLED_APPS:
+            return
+        from django.contrib import admin
         from single_session.admin import __actions__, __permissions__
 
         User = get_user_model()

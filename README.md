@@ -36,7 +36,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddlware',
     # ...
 ]
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 ```
+
+For the `SESSION_ENGINE` setting, the database backend, `django.contrib.sessions.backends.db` should be used, since that is the one where the item is linking to.
 
 In order to work properly, the `SessionMiddleware` and `AuthenticationMiddleware` will be necessary, or another middleware class that will add a `.session` and `.user` attribute on the
 request object and will trigger the `user_logged_in` and `user_logged_out` signals with the proper session and user.
