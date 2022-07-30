@@ -1,7 +1,7 @@
 name: django-single-session CI
 on: push
 jobs:
-  lint:
+  black:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
