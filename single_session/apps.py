@@ -6,6 +6,7 @@ class SingleSessionConfig(AppConfig):
     """
     The app config for the single_session app.
     """
+
     name = "single_session"
     verbose_name = "Single session"
     default_auto_field = "django.db.models.BigAutoField"
@@ -19,7 +20,8 @@ class SingleSessionConfig(AppConfig):
         from single_session import signals  # noqa
         from django.contrib.auth import get_user_model
         from django.contrib.sessions.models import Session
-        if 'django.contrib.admin' not in settings.INSTALLED_APPS:
+
+        if "django.contrib.admin" not in settings.INSTALLED_APPS:
             return
         from django.contrib import admin
         from single_session.admin import __actions__, __permissions__
