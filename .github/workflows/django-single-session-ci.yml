@@ -81,7 +81,7 @@ jobs:
       working-directory: 'testproject'
     - run: python manage.py makemessages --locale=${{ matrix.locale }} --settings=docs.source.settings
       working-directory: 'testproject'
-    - run: git diff --exit-code
+    - run: git diff --ignore-matching-lines='^"POT-Creation-Date:' --exit-code
       working-directory: 'testproject'
 
   no-compilemessages:
@@ -108,7 +108,7 @@ jobs:
       working-directory: 'testproject'
     - run: python manage.py compilemessages --settings=docs.source.settings
       working-directory: 'testproject'
-    - run: git diff --ignore-matching-lines='^"POT-Creation-Date:' --exit-code
+    - run: git diff --exit-code
       working-directory: 'testproject'
 
   build:
