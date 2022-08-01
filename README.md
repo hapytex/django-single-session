@@ -68,4 +68,3 @@ and log these out with the "*Log out the user on all sessions*" action. This wil
 In order to do this, the `single_session.logout` permission is required, so only admin users and users with such permission can log out other users. Users with such permission can log out users, but
 *not* admin users. There is an extra permission named `single_session.logout_all` to log out all users, including admin users. Users with such permission can thus also log out admin users, so it
 might be better not to give such permission to all (staff) users.
-

@@ -54,6 +54,7 @@ jobs:
       working-directory: 'testproject'
     - run: "! python manage.py makemigrations --dry-run --check --settings=docs.source.settings"
       working-directory: 'testproject'
+      shell: batch
 
 
   build:
