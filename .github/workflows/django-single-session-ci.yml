@@ -47,7 +47,7 @@ jobs:
     - run: pip install setuptools
     - run: python setup.py sdist
 
-  publish:
+  test-publish:
     runs-on: ubuntu-latest
     needs: [black, build, test]
     steps:
