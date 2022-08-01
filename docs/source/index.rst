@@ -20,6 +20,7 @@ exporting data with included admin integration.
 
    installation
    getting_started
+   admin_actions
 
 .. toctree::
    :maxdepth: 2

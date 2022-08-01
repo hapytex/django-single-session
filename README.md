@@ -1,5 +1,8 @@
 # Django-single-session
 
+[![PyPi version](https://badgen.net/pypi/v/django-single-session/)](https://pypi.python.org/pypi/django-single-session/)
+[![Documentation Status](https://readthedocs.org/projects/django-single-session/badge/?version=latest)](http://django-single-session.readthedocs.io/?badge=latest)
+[![PyPi license](https://badgen.net/pypi/license/django-single-session/)](https://pypi.python.org/pypi/django-single-session/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A Django app that enforces that a user has only one active session: if the user logs in on another browser/device, then the previous sessions will log out.
@@ -62,9 +65,12 @@ The toolo will also clean up *all* sessions of a user in case that user logs out
 
 ## Logging out (other) users
 
-If there is a `ModelAdmin` for the user model (if you use the default user model, then there is such `ModelAdmin`) will have an extra action to log out (other) users. You can thus select users,
-and log these out with the "*Log out the user on all sessions*" action. This will invalidate all the sessions for (all) the selected user(s).
+If there is a `ModelAdmin` for the user model (if you use the default user model, then there is such `ModelAdmin`), and the `django.contrib.admin` package is installed,
+then that `ModelAdmin` will have extra actions to log out normal users and admin users.
 
-In order to do this, the `single_session.logout` permission is required, so only admin users and users with such permission can log out other users. Users with such permission can log out users, but
-*not* admin users. There is an extra permission named `single_session.logout_all` to log out all users, including admin users. Users with such permission can thus also log out admin users, so it
+You can thus select users, and log these out with the "*Log out the user on all sessions*" action. This will invalidate all the sessions for (all) the selected user(s). In order to do this,
+the `single_session.logout` permission is required, so only admin users and users with such permission can log out other users. Users with such permission can log out users, but
+*not* admin users.
+
+There is an extra permission named `single_session.logout_all` to log out all users, including *admin* users. Users with such permission can thus also log out admin users, so it
 might be better not to give such permission to all (staff) users.
