@@ -61,6 +61,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.7', '3.8', '3.9', '3.10']
+        locale: [nl]
     steps:
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -76,7 +77,7 @@ jobs:
     - run: "mv testproject_temp/* testproject/"
     - run: pip install -r requirements.txt
       working-directory: 'testproject'
-    - run: python manage.py makemessages --settings=docs.source.settings
+    - run: python manage.py makemessages --locale=${{ matrix.locale }} --settings=docs.source.settings
       working-directory: 'testproject'
     - run: git diff --check --exit-code
       working-directory: 'testproject'
