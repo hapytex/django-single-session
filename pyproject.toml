@@ -4,8 +4,11 @@ version = "0.1.0"
 authors = [{name = "Willem Van Onsem", email = "hapythexeu+gh@gmail.com"}]
 
 [build-system]
-requires = ['setuptools>=40.8.0', 'wheel']
+requires = ['setuptools>=45', 'wheel', 'setuptools_scm[toml]>=6.2']
 build-backend = 'setuptools.build_meta:__legacy__'
+
+[tool.setuptools_scm]
+write_to = "_version.py"
 
 [tool.black]
 extend-exclude = '(.*/migrations/.*|setup)\.py'
