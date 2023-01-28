@@ -40,6 +40,9 @@ class UserSession(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="+"
     )
 
+    def __str__(self):
+        return f"{self.user.username} - {self.session.session_key}"
+
     class Meta:
         permissions = [
             ("logout", _("Logout user sessions in bulk for a given user.")),
