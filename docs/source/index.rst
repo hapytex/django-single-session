@@ -2,8 +2,8 @@
 Django single session
 =====================
 
-django-import-export is a Django application and library for importing and
-exporting data with included admin integration.
+django-single-session is a Django library for ensuring that a user can be logged
+in to only one session at a time.
 
 **Features:**
 

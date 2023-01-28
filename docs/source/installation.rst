@@ -33,8 +33,12 @@ One can install the app by adding the `single_session` app to the `INSTALLED_APP
        # ...
    ]
 
-In order to work properly, the `SessionMiddleware` and `AuthenticationMiddleware` will be necessary, or another middleware class that will add a `.session` and `.user` attribute on the
-request object and will trigger the `user_logged_in` and `user_logged_out` signals with the proper session and user.
+
+In order to work properly, the `SessionMiddleware` and `AuthenticationMiddleware` is be necessary, or another
+middleware class that will add a `.session` and `.user` attribute on the request object and
+will trigger the `user_logged_in` and `user_logged_out` signals with the proper session and user.
+
+You also need to be using the database session backend
 
 and running `migrate` to migrate the database properly:
 
