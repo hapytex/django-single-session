@@ -15,7 +15,7 @@ if settings.SESSION_ENGINE != "django.contrib.sessions.backends.db":
 if "django.contrib.sessions" not in settings.INSTALLED_APPS:
     raise ImproperlyConfigured(
         _(
-            "The djang-single-session package can only work if the 'django.contrib.sessions' app is installed in INSTALLED_APPS."
+            "The django-single-session package can only work if the 'django.contrib.sessions' app is installed in INSTALLED_APPS."
         )
     )
 

@@ -59,9 +59,9 @@ the old session(s) will be closed.
 
 ## Configuration
 
-One can disable the single session behavior by specifying the `SINGLE_USER_SESSION` setting in `settings.py` and thus setting this value to `False` (or any other value with truthiness `False`).
+One can disable the single session behavior by setting `SINGLE_USER_SESSION` in `settings.py` to `False` (or any other value with truthiness `False`).
 
-The toolo will also clean up *all* sessions of a user in case that user logs out. This thus means that if a user logs out on one browser/device, they will log out on all other browsers/devices as well. This functionality is still enabled if `SINGLE_USER_SESSION` is set to `False`. You can disable this by setting the `LOGOUT_ALL_SESSIONS` setting in `settings.py` to `False` (or any other value with truthiness `False`).
+The tool will also clean up *all* sessions of a user in case that user logs out. This thus means that if a user logs out on one browser/device, they will log out on all other browsers/devices as well. This functionality is still enabled if `SINGLE_USER_SESSION` is set to `False`. You can disable this by setting the `LOGOUT_ALL_SESSIONS` setting in `settings.py` to `False` (or any other value with truthiness `False`).
 
 ## Logging out (other) users
 
