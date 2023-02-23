@@ -1,12 +1,16 @@
 from django.contrib.auth import get_user_model
 from django.contrib.sessions.models import Session
-from django.db.models import Q
 from django.test import TestCase
 from django.test.client import Client
 from django.test.utils import override_settings
 from single_session.models import UserSession
 
-# Create your tests here.
+
+def validate_user(user):
+    """Log out the user foo, but not the user bar"""
+    if user.username == "foo":
+        return True
+    return False
 
 
 class SingleSessionTest(TestCase):
@@ -43,6 +47,17 @@ class SingleSessionTest(TestCase):
         self.login_bar(self.client3, 2)
         self.login_foo(self.client, 2)
         self.logout(self.client, 1)
+        self.logout(self.client3)
+
+    @override_settings(SINGLE_USER_SESSION='single_session.tests.validate_user')
+    def test_login_logout_scenario_with_per_user_configuration(self):
+        self.validate_session_number(0)
+        self.login_foo(self.client)
+        self.login_foo(self.client2)  # second session for foo, logs out
+        self.login_bar(self.client, 2)
+        self.login_bar(self.client3, 3)  # second session for bar, stays logged in
+        self.logout(self.client, 1)  # logs out both sessions
+        self.logout(self.client2)
         self.logout(self.client3)
 
     @override_settings(SINGLE_USER_SESSION=False)
