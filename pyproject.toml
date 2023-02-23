@@ -1,6 +1,6 @@
 [project]
-name = "django-single-login"
-version = "0.1.0"
+name = "django-single-session"
+version = "0.1.1"
 authors = [{name = "Willem Van Onsem", email = "hapythexeu+gh@gmail.com"}]
 
 [build-system]
