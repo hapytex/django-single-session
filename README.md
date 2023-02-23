@@ -74,3 +74,8 @@ the `single_session.logout` permission is required, so only admin users and user
 
 There is an extra permission named `single_session.logout_all` to log out all users, including *admin* users. Users with such permission can thus also log out admin users, so it
 might be better not to give such permission to all (staff) users.
+
+# Contributors
+
+ - [@alastair](https://github.com/alastair) implemented a system such that one can add a string that points to a callback for the `SINGLE_USER_SESSION` setting, to make it possible to determine what users should be logged out.
+

@@ -6,8 +6,8 @@ project = "django-single-session"
 copyright = "2022, Willem Van Onsem"
 author = "Willem Van Onsem"
 
-release = "0.1"
-version = "0.1.0"
+release = "0.2"
+version = "0.2.0"
 
 from os import environ
 from os.path import dirname
