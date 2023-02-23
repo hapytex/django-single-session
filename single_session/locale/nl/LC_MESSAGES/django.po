@@ -51,7 +51,7 @@ msgid "Logout user sessions in bulk for a given (admin) user."
 msgstr ""
 "Log de gebruikersessies uit voor de gegeven (administrator) gebruiker(s)."
 
-#: single_session/signals.py:19
+#: single_session/signals.py:20
 #, python-format
 msgid ""
 "The django-single-session package setting SINGLE_USER_SESSION must be a "
@@ -60,4 +60,5 @@ msgid ""
 msgstr ""
 "De instelling SINGLE_USER_SESSION voor het django-single-session pakket "
 "moeteen boolean of strings zijn die naar een callable gaat die een User-"
-"objectgebruikt. Kan de instelling %(setting)r niet importeren"
+"object gebruikt. Kan de instelling %(setting)r niet importeren"
+
