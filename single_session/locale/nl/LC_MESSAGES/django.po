@@ -36,7 +36,7 @@ msgstr ""
 
 #: single_session/models.py:18
 msgid ""
-"The djang-single-session package can only work if the 'django.contrib."
+"The django-single-session package can only work if the 'django.contrib."
 "sessions' app is installed in INSTALLED_APPS."
 msgstr ""
 "Het django-single-session pakket kan enkel werken als de'django.contrib."

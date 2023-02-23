@@ -16,9 +16,8 @@ if isinstance(single_user_session_setting, str):
         import_string(single_user_session_setting)
     except ImportError:
         raise ImproperlyConfigured(
-            _(
-                "The django-single-session package setting SINGLE_USER_SESSION must be a boolean or a string to a callable that takes a User object. Cannot import '%s'" % single_user_session_setting
-            )
+            _("The django-single-session package setting SINGLE_USER_SESSION must be a boolean or a string to a callable that takes a User object. Cannot import %(setting)r")
+            % {'setting': single_user_session_setting}
         )
 
 
