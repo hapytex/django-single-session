@@ -1,9 +1,25 @@
 from django.conf import settings
 from django.contrib.auth import user_logged_in, user_logged_out
 from django.contrib.sessions.models import Session
+from django.core.exceptions import ImproperlyConfigured
 from django.dispatch.dispatcher import receiver
 from django.test.signals import setting_changed
+from django.utils.module_loading import import_string
+from django.utils.translation import gettext_lazy as _
+
 from single_session.models import UserSession
+
+
+single_user_session_setting = getattr(settings, "SINGLE_USER_SESSION", None)
+if isinstance(single_user_session_setting, str):
+    try:
+        import_string(single_user_session_setting)
+    except ImportError:
+        raise ImproperlyConfigured(
+            _(
+                "The django-single-session package setting SINGLE_USER_SESSION must be a boolean or a string to a callable that takes a User object. Cannot import '%s'" % single_user_session_setting
+            )
+        )
 
 
 def remove_other_sessions(sender, user, request, **kwargs):
@@ -15,7 +31,11 @@ def remove_other_sessions(sender, user, request, **kwargs):
     associated to that user.
     """
     # remove other sessions
-    if getattr(settings, "SINGLE_USER_SESSION", True):
+    session_validate_function = None
+    session_setting = getattr(settings, "SINGLE_USER_SESSION", True)
+    if isinstance(session_setting, str):
+        session_validate_function = import_string(getattr(settings, "SINGLE_USER_SESSION"))
+    if (session_validate_function and session_validate_function(user)) or session_setting is True:
         remove_all_sessions(sender, user, request, **kwargs)
 
     # save current session
