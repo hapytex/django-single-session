@@ -49,7 +49,7 @@ class SingleSessionTest(TestCase):
         self.logout(self.client, 1)
         self.logout(self.client3)
 
-    @override_settings(SINGLE_USER_SESSION='single_session.tests.validate_user')
+    @override_settings(SINGLE_USER_SESSION="single_session.tests.validate_user")
     def test_login_logout_scenario_with_per_user_configuration(self):
         self.validate_session_number(0)
         self.login_foo(self.client)

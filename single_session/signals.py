@@ -16,8 +16,10 @@ if isinstance(single_user_session_setting, str):
         import_string(single_user_session_setting)
     except ImportError:
         raise ImproperlyConfigured(
-            _("The django-single-session package setting SINGLE_USER_SESSION must be a boolean or a string to a callable that takes a User object. Cannot import %(setting)r")
-            % {'setting': single_user_session_setting}
+            _(
+                "The django-single-session package setting SINGLE_USER_SESSION must be a boolean or a string to a callable that takes a User object. Cannot import %(setting)r"
+            )
+            % {"setting": single_user_session_setting}
         )
 
 
@@ -33,8 +35,12 @@ def remove_other_sessions(sender, user, request, **kwargs):
     session_validate_function = None
     session_setting = getattr(settings, "SINGLE_USER_SESSION", True)
     if isinstance(session_setting, str):
-        session_validate_function = import_string(getattr(settings, "SINGLE_USER_SESSION"))
-    if (session_validate_function and session_validate_function(user)) or session_setting is True:
+        session_validate_function = import_string(
+            getattr(settings, "SINGLE_USER_SESSION")
+        )
+    if (
+        session_validate_function and session_validate_function(user)
+    ) or session_setting is True:
         remove_all_sessions(sender, user, request, **kwargs)
 
     # save current session
