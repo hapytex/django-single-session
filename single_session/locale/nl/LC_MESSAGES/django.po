@@ -42,11 +42,22 @@ msgstr ""
 "Het django-single-session pakket kan enkel werken als de'django.contrib."
 "sessions' app is geïnstalleerd in INSTALLED_APPS."
 
-#: single_session/models.py:45
+#: single_session/models.py:48
 msgid "Logout user sessions in bulk for a given user."
 msgstr "Log de gebruikersessies uit voor de gegeven gebruiker(s)."
 
-#: single_session/models.py:46
+#: single_session/models.py:49
 msgid "Logout user sessions in bulk for a given (admin) user."
 msgstr ""
 "Log de gebruikersessies uit voor de gegeven (administrator) gebruiker(s)."
+
+#: single_session/signals.py:19
+#, python-format
+msgid ""
+"The django-single-session package setting SINGLE_USER_SESSION must be a "
+"boolean or a string to a callable that takes a User object. Cannot import "
+"%(setting)r"
+msgstr ""
+"Het instelling SINGLE_USER_SESSION voor het django-single-session pakket moet"
+"een boolean of strings zijn die naar een callable gaat die een User-object"
+"gebruikt. Can de instelling %(setting)r niet importeren"
