@@ -13,6 +13,7 @@ dist/
 .idea/
 *.python-version
 .coverage
+_version.py
 
 djutils/
 manage.py
