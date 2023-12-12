@@ -1,15 +1,22 @@
+from importlib import import_module
+
 from django.conf import settings
 from django.contrib.sessions.models import Session
 from django.db import models
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import gettext_lazy as _
 
-
-if settings.SESSION_ENGINE != "django.contrib.sessions.backends.db":
-    raise ImproperlyConfigured(
-        _(
-            "The django-single-session package can only work with the 'django.contrib.sessions.backends.db' as SESSION_ENGINE."
+try:
+    if not issubclass(import_module(settings.SESSION_ENGINE).SessionStore,
+                      import_module("django.contrib.sessions.backends.db").SessionStore):
+        raise ImproperlyConfigured(
+            _("The django-single-session package can only work with the 'django.contrib.sessions.backends.db' "
+              "or derived backends as SESSION_ENGINE.")
         )
+except (ImportError, AttributeError):
+    raise ImproperlyConfigured(
+        _("The django-single-session package requires a session backend compatible "
+          "with 'django.contrib.sessions.backends.db")
     )
 
 if "django.contrib.sessions" not in settings.INSTALLED_APPS:
